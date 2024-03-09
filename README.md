@@ -1,7 +1,7 @@
 Ir a descargas del computador 
 Abrir terminal bash 
-Correr el comanto :
-git clone https://github.com/Halver-1809/Marvent.git
+Correr el comando :
+"git clone https://github.com/Halver-1809/Marvent.git"
 
 En git bsh dirigirse a Marvent , cuando este en la raiz del proyecto correr el comando
 
