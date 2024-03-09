@@ -3,9 +3,9 @@ Abrir terminal bash
 Correr el comando :
 "git clone https://github.com/Halver-1809/Marvent.git"
 
-En git bsh dirigirse a Marvent , cuando este en la raiz del proyecto correr el comando
+En git bash dirigirse a Marvent , cuando este en la raiz del proyecto correr el comando
 
-code . 
+" code . " 
 
 
 Se le abrira Visual Code con el proyecto , ejecutelo con xampp
