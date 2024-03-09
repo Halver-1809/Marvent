@@ -1,0 +1,279 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+img.nav-link{
+  width: 130px;
+
+  
+}
+
+
+.d-flex {
+  display: flex!important;
+  justify-content: flex-end;
+}
+
+header h1{
+  text-align: center;
+  color: #F4EBDF;
+  font-size: 35px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  margin: 0px;
+  
+}
+
+header{
+ 
+  background-color:#686767;
+}
+
+/*
+edit2 es de la navegacion de los botones
+*/
+.edit2 {
+  height: 85vh;
+  background-color: #b9894e;
+  justify-content: center;
+}
+/*
+edit3 es de mostrar los datos, boton buscar y agregar
+*/
+.edit5 {
+  height: 85vh;
+  background-color: #f4ebdf;
+}
+.edit-5 {
+  height: 85vh;
+  background-color: #f4ebdf;
+
+}
+/*
+navegation es para estilizar los botones que le permiten navegar
+*/
+.navegation {
+  margin: 10%;
+}
+.navegation a {
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+  font-family: "Sono", sans-serif;
+  align-items: center;
+}
+.navegation button {
+  margin-top: 15px;
+  border-radius: 15px;
+  border: 2px solid transparent;
+  background-color: #f4ebdf;
+  width: 180px;
+  height: 45px;
+  -webkit-box-shadow: 7px 7px 14px -1px rgba(0,0,0,0.52);
+  -moz-box-shadow: 7px 7px 14px -1px rgba(0,0,0,0.52);
+  box-shadow: 7px 7px 14px -1px rgba(0,0,0,0.52);
+  
+}
+.navegation button :hover {
+  transform: scale(1.1);
+}
+/*
+boton para estilizar el boton de busqueda
+*/
+.boton {
+  max-width: 300px;
+  margin: 15px;
+  width: 250px;
+  border-radius: 15px;
+  border: 2px solid transparent;
+  background-color: #b4aaa5;
+  min-width: 85px;
+}
+.prod p {
+  font-size: 15px;
+}
+.prod input {
+  border-radius: 10px;
+  width: 250px;
+}
+.tres {
+  margin: 15px;
+  align-self: end;
+  justify-self: center;
+}
+
+/*
+Esta clase edita lo que esta dentro de las ventanas emergentes
+*/
+.ingresar p {
+  font-size: 15px;
+}
+.ingresar input {
+  border-radius: 8px;
+  width: 250px;
+  text-align: center;
+}
+/*
+Esta ckase edita los botones dentro de las ventanas emergentes
+las cuales son iconos
+*/
+.buttonvent {
+  margin: 15px;
+  width: 150px;
+  border: 2px solid transparent;
+  background-color: rgb(58, 199, 255);
+  color: white;
+}
+/*
+footer para darle color y tamaño
+el grupo1 contiene el logo
+el grupo2 contiene los iconos de redes sociales
+*/
+
+.grupo1 img {
+  width: 130px;
+  margin: 10px;
+}
+.grupo2 img {
+  width: 40px;
+  margin: 10px;
+  justify-self: right;
+}
+.grupo2 img:hover {
+  transform: scale(1.2);
+}
+
+.table {
+  margin-block-end: 450px;
+  margin-left: 110px;
+  
+  max-width: 80%;
+  display: block;
+  height: 350px;
+  overflow-y: auto;
+}
+/*
+.co{
+    border: 1px solid red;
+}
+.container{
+    border: 1px solid blue;
+}
+*/
+.edit-4 button {
+  border-radius: 15px;
+  width: 80px;
+  height: 40px;
+  margin: 4px;
+  background-color: #69645e;
+  border: 2px solid transparent;
+}
+
+.color_fondo {
+  background-color: #f4ebdf;
+}
+.nav-paginacion {
+  background-color: #1c9205;
+  color: #1c9205;
+  border-bottom-color: #1c9205;
+}
+
+
+
+
+@media (max-width: 465px) 
+{
+
+  .container.nav{
+      align-items: center;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      padding: 0px;
+  }
+  
+}
+
+
+
+#row-pie{
+
+  background-color: #686767;
+}
+
+
+
+#row-pie .grupo2 img{
+
+  width: 30px;
+  margin: 10px;
+
+}
+
+#row-pie a:link{
+  color: #ffffff;
+  text-decoration: none;
+
+}
+#row-pie a:visited{
+  color: #ffffff;
+  text-decoration: none;
+
+}
+#row-pie a:hover{
+  color: #ffffff;
+  text-decoration: none;
+
+}
+#row-pie a:active{
+  color: #ffffff;
+  text-decoration: none;
+
+}
+
+#row-pie .pie-bajo{
+ 
+  background-color: #5E5E5E;
+
+}
+
+
+#row-pie .pie-bajo p{
+ 
+ 
+  padding: 5px 0px;
+  margin: 0px;
+  color: #ffffff7a;
+  font-family: 'Times New Roman', Times, serif;
+  
+
+}
+.d-grid {
+  display: grid!important;
+  justify-content: center;
+}
+
+.modal-footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content:center ;
+
+  
+}
+
+.botones button{
+  margin: 16px;
+  
+}
+
+.botones{
+  display: flex;
+  align-items: center;
+  align-content: flex-start;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+

@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: #8E6B3C;
+    padding: auto;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+
+}
+
+header img{
+    width: 90px;
+    margin: 15px;
+}
+.img1 img{
+    width: 180px;
+}
+.invent{
+    font-size: 35px;
+    color: white;
+}
+
+.nav{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: auto;
+    height: auto;
+
+}
+.links{
+    background-color: #c59658;
+    text-align: center;
+
+
+}
+.links a{
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+}
+.links li{
+    padding: 1em;
+}
+.text{
+    background-color: #f5c381;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(20px, auto);
+    height: auto;
+    justify-items: center;
+}
+.text div{
+    padding: 4em;
+}
+
+.text{
+    text-align: center;
+}
+.text h2{
+    color: rgb(158, 158, 158);
+}
+
+footer{
+    background-color: black;
+    height: 150px;
+}
+.pie-pagina{
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: flex-end;
+
+
+}
+.grupo2 img{
+    width: 68px;
+    margin: 10px;
+}
+.grupo2 img:hover{
+    transform: scale(1.2);
+}
+.grupo1 img{
+    width: 250px;
+
+}
+/*proveedores
+
+ */
+.sub{
+    background-color: #f5c381;
+    display: grid;
+    grid-template-columns: repeat(1);
+    grid-auto-rows: minmax(20px, 2);
+}
+.search{
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.search input{
+    width: 300px;
+    height: 25px;
+    border-radius: 9%;
+}
+.search1 {
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-start;
+}
+
+.search1 img{
+    width: 50px;
+}
+.search2 button img{
+    width: 80px;
+}
