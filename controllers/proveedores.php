@@ -8,7 +8,7 @@ $Direccion=$_POST['Direccion_proveedor'];
 
 
 $consulta="INSERT INTO proveedor VALUES (null, '$Email', '$Nombre', '$Tell', '$Direccion')";
-$resultado=mysqli_query($conexion,$consulta);
+$resultado=mysqli_query($conn,$consulta);
 if($resultado == 1){
     echo "<script>location.href = '../views/providers.php';</script>"; 
 

@@ -9,7 +9,7 @@ $rol=$_POST['rol'];
 
 
 $consulta="INSERT INTO usuarios VALUES (null, '$nombre', '$telefono', '$email', '$direccion','$contrasena', '$rol ')";
-$resultado=mysqli_query($conexion,$consulta);
+$resultado=mysqli_query($conn,$consulta);
 if($resultado == 1){
     echo "<script>location.href = '../views/login.php';</script>"; 
 

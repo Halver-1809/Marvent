@@ -7,7 +7,7 @@ $contrasena=md5($_POST['contrasena']);
 
 
 $consulta="SELECT*FROM usuarios where UsuEmailPersonal='$usuario' and UsuContrasena ='$contrasena'";
-$resultado=mysqli_query($conexion,$consulta);
+$resultado=mysqli_query($conn,$consulta);
 
 
 

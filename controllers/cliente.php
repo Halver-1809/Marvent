@@ -8,7 +8,8 @@ $emailC=$_POST['Email_Cliente'];
 
 
 $consulta="INSERT INTO cliente VALUES (null, '$cedulaC', '$nombreC', '$telefonoC', '$direccionC', '$emailC')";
-$resultado=mysqli_query($conexion,$consulta);
+$resultado=mysqli_query($conn,$consulta);
+
 if($resultado == 1){
     echo "<script>location.href = '../views/client.php';</script>"; 
 

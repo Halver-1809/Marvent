@@ -8,7 +8,7 @@ $cantidad=$_POST['CantidadProducto'];
 
 
 $consulta="INSERT INTO producto VALUES (null, '$nombre', '$precio', '$marca', '$fechaExpedicion','$cantidad', '1')";
-$resultado=mysqli_query($conexion,$consulta);
+$resultado=mysqli_query($conn,$consulta);
 if($resultado == 1){
     echo "<script>location.href = '../views/inventory.php';</script>"; 
 

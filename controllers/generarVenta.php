@@ -1,22 +1,31 @@
 <?php
+
 require '../models/home.php';
 
-// Recibir los datos de la venta
-$precioTotal = $_POST['precioTotal'];
-$cantidadTotal = $_POST['cantidadTotal'];
-$idClienteFK = $_POST['idClienteFK'];
-$idUsuariosFK = $_POST['idUsuariosFK'];
+if (isset($_POST['precioTotal']) && isset($_POST['idCliente']) && isset($_POST['idUsuario'])) {
 
-// Insertar la venta en la tabla ventas
-$sql = "INSERT INTO ventas (VentPrecioTotal, VentCantidadTotal, IdClienteFK, IdUsuariosFK) VALUES ('$precioTotal', '$cantidadTotal', '$idClienteFK', '$idUsuariosFK')";
-$resultado = mysqli_query($conn, $query);
+    $precioTotal = $_POST['precioTotal'];
+    $idCliente = $_POST['idCliente'];
+    $idUsuario = $_POST['idUsuario'];
 
-if ($conn->query($sql) === TRUE) {
-    echo json_encode(array('success' => true));
+    echo "<script>";
+    echo "console.log('ID Cliente BACK:', '" . $idCliente . "');";
+    echo "console.log('ID Usuario BACK:', '" . $idUsuario . "');";
+    echo "</script>";
+
+    $sql = "INSERT INTO ventas (VentPrecioTotal, IdClienteFK, IdUsuariosFK) VALUES ('$precioTotal', '$idCliente', '$idUsuario')";
+    $resultado = mysqli_query($conn, $sql);
+    if ($resultado) {
+        $response['success'] = true;
+        $response['message'] = 'Datos de la venta guardados correctamente.';
+    } else {
+        $response['success'] = false;
+        $response['message'] = 'Error al guardar los datos de la venta: ' . mysqli_error($conn);
+    }
 } else {
-    echo json_encode(array('success' => false, 'error' => $conn->error));
+    $response['success'] = false;
+    $response['message'] = 'No se recibieron los datos de la venta correctamente.';
 }
 
-// Cerrar la conexión a la base de datos
 $conn->close();
 ?>

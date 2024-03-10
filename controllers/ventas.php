@@ -8,7 +8,7 @@ $emailC=$_POST['ClieEmailPersonal'];
 
 
 $consulta="INSERT INTO ventas VALUES (null, '$nombreC', '$telefonoC', '$direccionC', '$emailC')";
-$resultado=mysqli_query($conexion,$consulta);
+$resultado=mysqli_query($conn,$consulta);
 if($resultado == 1){
     echo "<script>location.href = '../views/sales.php';</script>"; 
 

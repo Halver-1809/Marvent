@@ -8,27 +8,21 @@ if (!$_SESSION['UsuEmail']) {
 ?>
 
 <head>
-    <!--METADATOS-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="GESTION DE INVENTARIO DE MINIMERCADOS">
     <meta name="keywords" content="durabilidad, facilidad, inventario">
-    <!--TITULO-->
     <title>VENTAS</title>
-    <!--favicon-->
     <link rel="icon" href="../resources/imagenes/logo.png">
-    <!--LINKS-->
     <link rel="stylesheet" href="../resources/css/SalUp.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <!--LINK DE ICONOS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
 </head>
 
 <body>
-    <!--BARRA DE ARIBA-->
     <header>
         <nav class="navbar navbar-expand-md navbar-light">
             <div class="container nav">
@@ -190,7 +184,7 @@ if (!$_SESSION['UsuEmail']) {
                     <input type="text" name="prod" class="form-control" id="prod">
                     <br>
                     <button class="btn btn-dark" onclick="BuscarProd()">Buscar</button>
-                    
+
                 </div>
             </div>
             <div class="col-sm"></div>
@@ -291,7 +285,7 @@ if (!$_SESSION['UsuEmail']) {
                         </tfoot>
                     </table>
                     <div>
-                        <button class="btn btn-dark">Hacer Venta</button>
+                        <button class="btn btn-dark" onclick="EnviarVenta()">Hacer Venta</button>
 
                     </div>
                     <br>
@@ -350,17 +344,17 @@ if (!$_SESSION['UsuEmail']) {
     function consultarUser(documento) {
 
         $.ajax({
-           
+
             url: '../controllers/consultarUser.php?doc=' + documento,
             data: {},
             type: 'GET',
             dataType: 'json',
 
             success: function (json) {
-                $('#ClieNombre').val(json['1']);
-                $('#ClieTelPersonal').val(json['2']);
-                $('#CLieDireccion').val(json['3']);
-                $('#ClieEmailPersonal').val(json['4']);
+                $('#ClieNombre').val(json['2']);
+                $('#ClieTelPersonal').val(json['3']);
+                $('#CLieDireccion').val(json['4']);
+                $('#ClieEmailPersonal').val(json['5']);
             },
 
             error: function (xhr, status) {
@@ -393,54 +387,111 @@ if (!$_SESSION['UsuEmail']) {
             },
 
             complete: function (xhr, status) {
-               
+
             }
         });
     }
 
     function ActualizarSumaTotal() {
         var sumaTotal = 0;
-       
+
         $('#cuerpo-tabla tr').each(function () {
             var montoTotal = parseFloat($(this).find('td:last').text());
-           
+
             sumaTotal += montoTotal;
         });
 
-       
-        $('#idTotal').text(sumaTotal.toFixed(0)); 
+
+        $('#idTotal').text(sumaTotal.toFixed(0));
     }
 
     function AgregarFact() {
-    
+
         var idProducto = $('#IdProducto').val();
         var nombreProducto = $('#ProdNombreProducto').val();
-        var precioProducto = parseFloat($('#ProdPrecio').val()); 
+        var precioProducto = parseFloat($('#ProdPrecio').val());
         var marcaProducto = $('#ProdMarca').val();
         var fechaExpiracionProducto = $('#ProdFechaExpedicion').val();
-        var cantidadProducto = parseInt($('#ProdCantidad').val()); 
+        var cantidadProducto = parseInt($('#ProdCantidad').val());
 
-       
+
         var montoTotal = precioProducto * cantidadProducto;
 
-   
+
         var nuevaFila = '<tr>' +
             '<td>' + idProducto + '</td>' +
             '<td>' + nombreProducto + '</td>' +
-            '<td>' + precioProducto.toFixed(0) + '</td>' + 
+            '<td>' + precioProducto.toFixed(0) + '</td>' +
             '<td>' + marcaProducto + '</td>' +
             '<td>' + fechaExpiracionProducto + '</td>' +
             '<td>' + cantidadProducto + '</td>' +
-            '<td>' + montoTotal.toFixed(0) + '</td>' + 
+            '<td>' + montoTotal.toFixed(0) + '</td>' +
             '</tr>';
 
-       
+
         $('#cuerpo-tabla').append(nuevaFila);
         ActualizarSumaTotal();
 
     }
-    
 
+    function EnviarVenta() {
+        var documentoCliente = $('#doc').val(); 
+        var precioTotal = parseFloat($('#idTotal').text()); 
+        var correoSesion = <?php echo json_encode($_SESSION['UsuEmail']); ?>; 
+
+
+        console.log("Correo de sesión:", correoSesion);
+
+        if (!documentoCliente || isNaN(precioTotal) || precioTotal <= 0) {
+            alert('Por favor, complete los campos correctamente.');
+            return;
+        }
+
+        $.ajax({
+            url: '../controllers/buscarIdClie.php',
+            method: 'GET',
+            data: { documentoCliente: documentoCliente },
+            success: function (idCliente) {
+                if (idCliente !== '') {
+                    alert('ID del cliente: ' + idCliente + '\nPrecio Total: ' + precioTotal);
+                        
+                    $.ajax({
+                        url: '../controllers/buscarIdUsu.php',
+                        method: 'GET',
+                        data: { correoSesion: correoSesion },
+                        success: function (idUsuario) {
+                            if (idUsuario !== '') {
+                                alert('ID del usuario: ' + idUsuario + '\nPrecio Total: ' + precioTotal);
+
+                                $.ajax({
+                                    url: '../controllers/generarVenta.php',
+                                    method: 'POST',
+                                    data: { precioTotal: precioTotal, idCliente: idCliente, idUsuario: idUsuario },
+                                    success: function (response) {
+
+                                        alert('Venta Realizadaaaa!!!!!');
+                                    },
+                                    error: function (xhr, status) {
+                                        alert('Error al hacer la venta.');
+                                    }
+                                });
+                            } else {
+                                alert('No se encontró el ID del usuario.');
+                            }
+                        },
+                        error: function (xhr, status) {
+                            alert('Error al buscar el ID del usuario.');
+                        }
+                    });
+                } else {
+                    alert('No se encontró el cliente.');
+                }
+            },
+            error: function (xhr, status) {
+                alert('Error al buscar el ID del cliente.');
+            }
+        });
+    }
 </script>
 
 </HTml>
