@@ -1,4 +1,7 @@
 body,
+h5{
+    text-justify: center;
+}
 html {
     height: 100%;
 
@@ -18,19 +21,17 @@ body {
 
 }
 
+
 .form-box {
     width: 350px;
     height: 600px;
+    margin-left: -35%;
+    margin-top: 30%;
     padding: 40px;
     background: #C59750;
     background-size: cover;
-    align-items: center;
-
     border-radius: 24px;
     box-shadow: 0px 0px 6px 5px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 0px 6px 5px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 0px 6px 5px rgba(0, 0, 0, 0.75);
-
 }
 
 
@@ -230,3 +231,16 @@ li {
 
     color: black;
 }
+
+.alert {
+    position: fixed; 
+    top: 10%;
+    text-align: center;
+    left: 50%; 
+    transform: translateX(-5%); 
+    width: 55%; 
+    max-width: 400px; 
+    z-index: 1000; 
+    margin-top: 20px; 
+}
+

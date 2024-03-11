@@ -453,7 +453,6 @@ if (!$_SESSION['UsuEmail']) {
             data: { documentoCliente: documentoCliente },
             success: function (idCliente) {
                 if (idCliente !== '') {
-                    alert('ID del cliente: ' + idCliente + '\nPrecio Total: ' + precioTotal);
                         
                     $.ajax({
                         url: '../controllers/buscarIdUsu.php',
@@ -461,7 +460,6 @@ if (!$_SESSION['UsuEmail']) {
                         data: { correoSesion: correoSesion },
                         success: function (idUsuario) {
                             if (idUsuario !== '') {
-                                alert('ID del usuario: ' + idUsuario + '\nPrecio Total: ' + precioTotal);
 
                                 $.ajax({
                                     url: '../controllers/generarVenta.php',
@@ -469,7 +467,7 @@ if (!$_SESSION['UsuEmail']) {
                                     data: { precioTotal: precioTotal, idCliente: idCliente, idUsuario: idUsuario },
                                     success: function (response) {
 
-                                        alert('Venta Realizadaaaa!!!!!');
+                                        window.location.href = '../views/sales.php?message=success';
                                     },
                                     error: function (xhr, status) {
                                         alert('Error al hacer la venta.');

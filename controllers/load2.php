@@ -1,21 +1,15 @@
 <?php
-/*
-* Script: Cargar datos de lado del servidor con PHP y MySQL
-*/
+
 require '../models/home.php';
 
-/* Un arreglo de las columnas a mostrar en la tabla */
 $columns = ['IdProveedor', 'ProvEmailPersonal', 'ProvNombre', 'ProvTelPersonal', 'ProvDireccion'];
 
-/* Nombre de la tabla */
 $table = "proveedor";
 
 $id = 'IdProveedor';
 
 $campo = isset($_POST['campo']) ? $conn->real_escape_string($_POST['campo']) : null;
 
-
-/* Filtrado */
 $where = '';
 
 if ($campo != null) {
@@ -29,7 +23,6 @@ if ($campo != null) {
     $where .= ")";
 }
 
-/* Limit */
 $limit = isset($_POST['registros']) ? $conn->real_escape_string($_POST['registros']) : 10;
 $pagina = isset($_POST['pagina']) ? $conn->real_escape_string($_POST['pagina']) : 0;
 
@@ -42,9 +35,6 @@ if (!$pagina) {
 
 $sLimit = "LIMIT $inicio , $limit";
 
-/**
- * Ordenamiento
- */
 
  $sOrder = "";
  if(isset($_POST['orderCol'])){
@@ -55,7 +45,7 @@ $sLimit = "LIMIT $inicio , $limit";
  }
 
 
-/* Consulta */
+
 $sql = "SELECT SQL_CALC_FOUND_ROWS " . implode(", ", $columns) . "
 FROM $table
 $where
@@ -64,19 +54,17 @@ $sLimit";
 $resultado = $conn->query($sql);
 $num_rows = $resultado->num_rows;
 
-/* Consulta para total de registro filtrados */
+
 $sqlFiltro = "SELECT FOUND_ROWS()";
 $resFiltro = $conn->query($sqlFiltro);
 $row_filtro = $resFiltro->fetch_array();
 $totalFiltro = $row_filtro[0];
 
-/* Consulta para total de registro filtrados */
 $sqlTotal = "SELECT count($id) FROM $table ";
 $resTotal = $conn->query($sqlTotal);
 $row_total = $resTotal->fetch_array();
 $totalRegistros = $row_total[0];
 
-/* Mostrado resultados */
 $output = [];
 $output['totalRegistros'] = $totalRegistros;
 $output['totalFiltro'] = $totalFiltro;

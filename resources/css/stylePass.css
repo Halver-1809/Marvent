@@ -1,0 +1,246 @@
+body,
+h5{
+    text-justify: center;
+}
+html {
+    height: 100%;
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url(./imagenes/Fondo\ login.jpg) no-repeat center top;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.form-box {
+    width: 350px;
+    height: 100%;
+    margin-left: -35%;
+    margin-top: 30%;
+    padding: 40px;
+    background: #C59750;
+    background-size: cover;
+    border-radius: 24px;
+    box-shadow: 0px 0px 6px 5px rgba(0, 0, 0, 0.75);
+}
+
+
+.button {
+    text-decoration: none;
+}
+
+.button2 {
+    color: black;
+    
+}
+
+.form-box1 {
+    width: 350px;
+    height: 450px;
+    padding: 40px;
+    background: #C59750;
+    background-size: cover;
+    border-radius: 24px;
+}
+
+
+.img-login {
+    width: 30%;
+
+}
+
+.form-box2 {
+    width: 350px;
+    height: 835px;
+    padding: 40px;
+    background: #C59750;
+    background-size: cover;
+    border-radius: 24px;
+    border-radius: 24px;
+    box-shadow: 0px 0px 6px 5px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 6px 5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 6px 5px rgba(0, 0, 0, 0.75);
+
+}
+
+.form-title {
+    color: #575754;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 30px;
+
+}
+
+.Form-tittle {
+    text-align: center;
+    font-size: 30px !important;
+}
+
+.form-tittle2 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 26px;
+}
+
+.form-title3 {
+    font-size: 16px;
+}
+
+
+.ListaDesplegable {
+    width: 320px;
+    color: #fff;
+    background-color: #686865;
+    height: 50px;
+    margin-left: 17px;
+    border-radius: 24px;
+
+
+}
+
+/*
+Fondo de la paginal principal
+*/
+.edit3 {
+    background-color: #B9894E;
+}
+
+
+/*.form-box input[type="text"],
+    .form-box input[type="password"]{
+
+        border: 0;
+        background: #686865;
+        display: block;
+        margin: 20px auto;
+        padding: 14px 10px;
+        border: 2px solid #686865;
+        width: 300px;
+        border-radius: 24px;
+        color: #B2B2B2;
+    }
+    .form-box1 input[type="email"] {
+        background: #686865 ;
+        border-radius: 24px;
+        margin-left: 10PX;
+        width: 318PX;
+        height: 38px;
+
+    }
+    .form-box button[type="submit"] {
+        border: 0;
+        background: #8D6B3C;
+        display: block;
+        margin: 20px auto;
+        padding: 14px 10px;
+        border: 2px solid #8D6B3C;
+        width: 300px;
+        border-radius: 24px;
+        color: #B2B2B2;
+    }
+    .form-box1 input[type="text"],
+    .form-box1 input[type="password"]{
+
+        border: 0;
+        background: #686865;
+        display: block;
+        margin: 20px auto;
+        padding: 14px 10px;
+        border: 2px solid #686865;
+        width: 300px;
+        border-radius: 24px;
+        color: #B2B2B2;
+    }
+    .form-box1 button[type="submit"] {
+        border: 0;
+        background: #8D6B3C;
+        display: block;
+        margin: 20px auto;
+        padding: 14px 10px;
+        border: 2px solid #8D6B3C;
+        width: 328px;
+        border-radius: 24px;
+        color: #B2B2B2;
+    }
+    .form-box2 input[type="text"],
+    .form-box2 input[type="password"]{
+   
+
+        border: 0;
+        background: #686865;
+        display: block;
+        margin: 20px auto;
+        padding: 14px 10px;
+        border: 2px solid #686865;
+        width: 300px;
+        border-radius: 24px;
+        color: #B2B2B2;
+    }
+    .form-box2 input[type='email']{
+        border-radius: 24px;
+        background-color: #686865;
+        color: #686865;
+        width: 300px;
+        height: 46px;
+        margin-left: 17px;
+    }
+    .form-box2 button[type="submit"] {
+        border: 0;
+        background: #8D6B3C;
+        display: block;
+        margin: 20px auto;
+        padding: 14px 10px;
+        border: 2px solid #8D6B3C;
+        width: 300px;
+        border-radius: 24px;
+        color: #B2B2B2;
+    }*/
+
+li {
+    text-decoration: none;
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+
+}
+
+.res a {
+    left: 810px;
+    text-align: center;
+
+    color: black;
+}
+
+.olv {
+    left: 965px;
+
+}
+
+.olv a {
+    text-align: center;
+
+    color: black;
+}
+
+.alert {
+    position: fixed; 
+    top: 10%;
+    text-align: center;
+    left: 50%; 
+    transform: translateX(-5%); 
+    width: 55%; 
+    max-width: 400px; 
+    z-index: 1000; 
+    margin-top: 20px; 
+}
+

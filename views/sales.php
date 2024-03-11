@@ -13,18 +13,17 @@
     <!--favicon-->
     <link rel="icon" href="../resources/imagenes/logo.png">
     <!--LINKS-->
-    <link rel="stylesheet" href="../resources/css/style1.css?V=1.4">
+    <link rel="stylesheet" href="../resources/css/style1.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <!--LINK DE ICONOS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
 </head>
-<?php 
+<?php
 session_start();
-if(!$_SESSION['UsuEmail'])
-{
-  header('location:../views/login.php');
+if (!$_SESSION['UsuEmail']) {
+    header('location:../views/login.php');
 }
 
 
@@ -181,29 +180,17 @@ if(!$_SESSION['UsuEmail'])
                                             </thead>
                                             <!-- El id del cuerpo de la tabla. -->
                                             <tbody id="content">
-                                                <?php
-                            require ("../models/home.php");
-                            $sql = $conn -> query("SELECT * FROM ventas
-                            INNER JOIN cliente ON ventas.IdClienteFK = cliente.IdCliente
-                            INNER JOIN usuarios ON ventas.IdUsuariosFK = usuarios.IdUsuarios
-                            ");
-
-                            while($resultado = $sql ->fetch_assoc()){
-                          ?>
-
-                                                <tr>
-                                                    <th scope="row"><?php echo $resultado['IdVentas']?></th>
-                                                    <th scope="row"><?php echo $resultado['VentPrecioTotal']?></th>
-                                                    <th scope="row"><?php echo $resultado['VentCantidadTotal']?></th>
-                                                    <th scope="row"><?php echo $resultado['ClieNombre']?></th>
-                                                    <th scope="row"><?php echo $resultado['UsuNombre']?></th>
-                                                </tr>
-
-                                                <?php
-                              }
-                          ?>
                                             </tbody>
                                         </table>
+                                        <?php
+                                        $message = $_GET['message'] ?? '';
+
+                                        if ($message === 'success') {
+                                            echo "<div class='alert alert-success' id='myAlert' role='alert'>Venta realizada con éxito.</div>";
+                                        } elseif ($message === 'error') {
+                                            echo "<div class='alert alert-danger' role='alert'>Error al realizar la venta. Por favor, inténtelo de nuevo.</div>";
+                                        }
+                                        ?>
                                     </div>
                                     <div class="row">
                                         <div class="col-6">
@@ -215,14 +202,78 @@ if(!$_SESSION['UsuEmail'])
                                         <input type="hidden" id="orderType" value="asc">
                                     </div>
                                 </div>
-                                <div class="tres">
-                                    <div class="container-fluid">
-                                    </div>
-                                </div>
-                            </div>
+                        </main>
+
+                        <script>
+                            /* Llamando a la función getData() */
+                            getData()
+                            /* Escuchar un evento keyup en el campo de entrada y luego llamar a la función getData. */
+                            document.getElementById("campo").addEventListener("keyup", function () {
+                                getData()
+                            }, false)
+                            document.getElementById("num_registros").addEventListener("change", function () {
+                                getData()
+                            }, false)
+                            /* Peticion AJAX */
+                            function getData() {
+                                let input = document.getElementById("campo").value
+                                let num_registros = document.getElementById("num_registros").value
+                                let content = document.getElementById("content")
+                                let pagina = document.getElementById("pagina").value
+                                let orderCol = document.getElementById("orderCol").value
+                                let orderType = document.getElementById("orderType").value
+                                if (pagina == null) {
+                                    pagina = 1
+                                }
+                                let url = "../controllers/load4.php"
+                                let formaData = new FormData()
+                                formaData.append('campo', input)
+                                formaData.append('registros', num_registros)
+                                formaData.append('pagina', pagina)
+                                formaData.append('orderCol', orderCol)
+                                formaData.append('orderType', orderType)
+                                fetch(url, {
+                                    method: "POST",
+                                    body: formaData
+                                }).then(response => response.json())
+                                    .then(data => {
+                                        content.innerHTML = data.data
+                                        document.getElementById("lbl-total").innerHTML = 'Mostrando ' + data
+                                            .totalFiltro +
+                                            ' de ' + data.totalRegistros + ' registros'
+                                        document.getElementById("nav-paginacion").innerHTML = data.paginacion
+                                    }).catch(err => console.log(err))
+                            }
+
+                            function nextPage(pagina) {
+                                document.getElementById('pagina').value = pagina
+                                getData()
+                            }
+                            let columns = document.getElementsByClassName("sort")
+                            let tamanio = columns.length
+                            for (let i = 0; i < tamanio; i++) {
+                                columns[i].addEventListener("click", ordenar)
+                            }
+
+                            function ordenar(e) {
+                                let elemento = e.target
+                                document.getElementById('orderCol').value = elemento.cellIndex
+                                if (elemento.classList.contains("asc")) {
+                                    document.getElementById("orderType").value = "asc"
+                                    elemento.classList.remove("asc")
+                                    elemento.classList.add("desc")
+                                } else {
+                                    document.getElementById("orderType").value = "desc"
+                                    elemento.classList.remove("desc")
+                                    elemento.classList.add("asc")
+                                }
+                                getData()
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         <footer class="row" id="row-pie">
             <div class="container">
@@ -245,6 +296,14 @@ if(!$_SESSION['UsuEmail'])
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+        </script>
+    <script>
+        var alertBox = document.getElementById('myAlert');
+
+
+        setTimeout(function () {
+            alertBox.style.display = 'none';
+        }, 5000); 
     </script>
     </main>
 </body>

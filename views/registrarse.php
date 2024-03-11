@@ -33,6 +33,8 @@ include '../views/helpers/headRegistrar.php';
                 <option value="1"> Administrador </option>
                 <option value="2"> Empleado </option>
             </select>
+            <input type="hidden" class="form-control" required placeholder="" name="token">
+            <input type="hidden" class="form-control" required placeholder="" name="fechaSoli">
             <br>
             <div class="text-center">
                 <p>Si ya tiene cuenta <a class="button2" href="login.php"> Ingresar</a></p>

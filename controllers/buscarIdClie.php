@@ -13,7 +13,6 @@ if (isset($_GET['documentoCliente'])) {
         $fila = mysqli_fetch_assoc($resultado);
         $idCliente = $fila['IdCliente'];
 
-        // Envía solo el valor del ID del cliente
         $response = $idCliente;
 
     } else {

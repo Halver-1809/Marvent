@@ -78,19 +78,19 @@ include '../models/home.php';
                 <form action="../controllers/editarClie.php" method="POST">
                     <?php
 
-          $id = $_GET['id'];
+                    $id = $_GET['id'];
 
-          include '../models/home.php';
+                    include '../models/home.php';
 
-          $sql = "SELECT * from cliente where IdCliente=$id";
+                    $sql = "SELECT * from cliente where IdCliente=$id";
 
-          $resFiltro = $conn->query($sql);
-          $row_filtro = $resFiltro->fetch_array();
-          ?>
+                    $resFiltro = $conn->query($sql);
+                    $row_filtro = $resFiltro->fetch_array();
+                    ?>
 
                     <input type="hidden" name="Id" value="<?php echo $row_filtro['IdCliente']; ?>">
                     <p>Cedula </p>
-                        <input type="text" name="ClieCedula" required placeholder="cedula"
+                    <input type="text" name="ClieCedula" required placeholder="cedula"
                         value="<?php echo $row_filtro['ClieCedula'] ?>">
                     <p>Nombre Del Cliente</p>
                     <input type="text" name="ClieNombre" required placeholder="nombre"
@@ -137,4 +137,4 @@ include '../models/home.php';
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous">
-</script>
+    </script>
